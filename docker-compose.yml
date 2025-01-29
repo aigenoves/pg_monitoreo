@@ -1,7 +1,7 @@
 services:
     
     postgresql:
-        image: postgres:15.4
+        image: postgres
         container_name: postgresql
         environment:
             POSTGRES_USER: ${DB_USERNAME}
@@ -17,7 +17,7 @@ services:
         volumes:
             - postgresql:/data/postgres
         ports:
-            - "5432:5432"
+            - "5433:5432"
         restart: unless-stopped
         networks:
             - monitoring
@@ -49,7 +49,7 @@ services:
         volumes:
             - grafana:/var/lib/grafana
         ports:
-            - "${GRAFANA_PORT:-3000}:3000"
+            - "${GRAFANA_PORT:-3030}:3000"
         restart: unless-stopped
         networks:
             - monitoring
